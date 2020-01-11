@@ -973,7 +973,6 @@ static enum power_supply_property smb2_batt_props[] = {
 	POWER_SUPPLY_PROP_CYCLE_COUNT,
 #ifdef CONFIG_MACH_ASUS_SDM660
 	POWER_SUPPLY_PROP_CHARGING_ENABLED,
-	POWER_SUPPLY_PROP_ADAPTER_ID,
 #endif
 };
 
@@ -1091,11 +1090,6 @@ static int smb2_batt_get_prop(struct power_supply *psy,
 	case POWER_SUPPLY_PROP_FCC_STEPPER_ENABLE:
 		val->intval = chg->fcc_stepper_mode;
 		break;
-#ifdef CONFIG_MACH_ASUS_SDM660
-	case POWER_SUPPLY_PROP_ADAPTER_ID:
-		rc = smblib_get_prop_adapter_id(chg, val);
-		break;
-#endif
 	default:
 		pr_err("batt power supply prop %d not supported\n", psp);
 		return -EINVAL;
@@ -2503,30 +2497,6 @@ static void remove_proc_charger_limit(void)
 	proc_remove(limit_entry);
 }
 
-int32_t get_ID_vadc_voltage(void)
-{
-	struct qpnp_vadc_chip *vadc_dev;
-	struct qpnp_vadc_result adc_result;
-	int32_t adc;
-
-	vadc_dev = qpnp_get_vadc(smbchg_dev->dev, "pm-gpio3");
-	if (IS_ERR(vadc_dev)) {
-		pr_debug("%s: qpnp_get_vadc failed\n", __func__);
-		return -1;
-	} else {
-		/* Read the GPIO2 VADC channel with 1:1 scaling */
-		qpnp_vadc_read(vadc_dev, VADC_AMUX2_GPIO, &adc_result);
-		adc = (int) adc_result.physical;
-
-		/* uV to mV */
-		adc = adc / 1000;
-
-		pr_debug("%s: adc=%d adc_result.physical=%lld adc_result.chan=0x%x\n",
-			__func__, adc,adc_result.physical,adc_result.chan);
-	}
-
-	return adc;
-}
 #endif
 
 static int smb2_probe(struct platform_device *pdev)
