@@ -222,8 +222,8 @@
 		compatible = "qcom,eeprom";
 		cam_vio-supply = <&pm8998_lvs1>;
 		qcom,cam-vreg-name = "cam_vio";
-		qcom,cam-vreg-min-voltage = <1800000>;
-		qcom,cam-vreg-max-voltage = <1800000>;
+		qcom,cam-vreg-min-voltage = <1850000>;
+		qcom,cam-vreg-max-voltage = <1850000>;
 		qcom,cam-vreg-op-mode = <80000>;
 		qcom,gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
@@ -406,8 +406,8 @@
 		qcom,eeprom-src = <&eeprom3>;
 		cam_vio-supply = <&pm8998_lvs1>;
 		qcom,cam-vreg-name = "cam_vio";
-		qcom,cam-vreg-min-voltage = <1800000>;
-		qcom,cam-vreg-max-voltage = <1800000>;
+		qcom,cam-vreg-min-voltage = <1850000>;
+		qcom,cam-vreg-max-voltage = <1850000>;
 		qcom,cam-vreg-op-mode = <80000>;
 		qcom,gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
