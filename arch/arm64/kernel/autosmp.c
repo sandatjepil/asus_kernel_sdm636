@@ -435,14 +435,6 @@ struct global_attr {
     ssize_t (*store)(struct kobject *, struct attribute *, const char *, size_t);
 };
 
-#define define_one_global_ro(_name)                 \
-static struct global_attr _name =                   \
-__ATTR(_name, 0444, show_##_name, NULL)
-
-#define define_one_global_rw(_name)                 \
-static struct global_attr _name =                   \
-__ATTR(_name, 0644, show_##_name, store_##_name)
-
 struct kobject *asmp_kobject;
 
 #define show_one(file_name, object)                 \
