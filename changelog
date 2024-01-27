@@ -1,16 +1,16 @@
-<b><#selectbg_g>Jan 15,2024</#></b>
+<b><#selectbg_g>Jan 28,2024</#></b>
 
-  <*> KernelSU update v0.7.5</*>
-  <*> Improve network stability</*>
-  <*> Improve Fast Charging</*>
+  <*> KernelSU update v0.7.6</*>
+  <*> Add AutoSMP Hotplug & Enable by default</*>
+  <*> Remove Alucard Hotplug</*>
+  <*> eMMC improvements</*>
+  <*> sdfat: upgrade to 2.6.0</*>
   <*> More Changes, and Improvements</*>
-
 
 
 <b><#selectbg_g>NOTES :</#></b>
 
-  <*> KernelSU is enabled by default and will disabled automatically if Magisk has been installed</*>
-  <*> Recommended to use KernelSU Manager v0.7.5</*>
+  <*> Recommended to use KernelSU Manager v0.7.6</*>
   <*> If u don't want KernelSU, just disable it</*>
   <*> Kernel need sometimes to settle.</*>
 
