@@ -2060,7 +2060,7 @@ static struct smb_irq_info smb2_irqs[] = {
 	},
 	[DCIN_UV_IRQ] = {
 		.name		= "dcin-uv",
-		.handler	= smblib_handle_dcin_uv,
+		.handler	= smblib_handle_debug,
 	},
 	[DCIN_OV_IRQ] = {
 		.name		= "dcin-ov",
