@@ -45,7 +45,7 @@ static struct smb_params v1_params = {
 		.reg	= FAST_CHARGE_CURRENT_CFG_REG,
 		.min_u	= 2700000,
 		.max_u	= 4500000,
-		.step_u	= 25000,
+		.step_u	= 30000,
 	},
 	.fv			= {
 		.name	= "float voltage",
