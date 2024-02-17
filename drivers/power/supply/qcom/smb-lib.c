@@ -3376,7 +3376,7 @@ int asus_get_prop_batt_temp(struct smb_charger *chg)
 	rc = smblib_get_prop_from_bms(chg, POWER_SUPPLY_PROP_TEMP,
 					&temp_val);
 
-    pr_info("asus_getprop_battery_temp: %d\n", temp_val.intval);
+    pr_info("%s: real temp %d\n", __func__, temp_val.intval);
 
     if (temp_val.intval < 500) {
         return 350;
@@ -3403,7 +3403,13 @@ int asus_get_prop_batt_capacity(struct smb_charger *chg)
 
 	rc = smblib_get_prop_batt_capacity(chg, &capacity_val);
 
-	return capacity_val.intval;
+    pr_info("%s: real capacity %d\n", __func__, capacity_val.intval);
+
+    if (capacity_val.intval > 20 && capacity_val.intval < 90) {
+        return 20;
+    } else {
+        return capacity_val.intval;
+    }
 }
 
 int asus_get_prop_batt_health(struct smb_charger *chg)
