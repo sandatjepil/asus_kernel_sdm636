@@ -3809,7 +3809,7 @@ void jeita_rule(void)
 	bat_volt = asus_get_prop_batt_volt(smbchg_dev);
 	bat_capacity = asus_get_prop_batt_capacity(smbchg_dev);
 	state = smbchg_jeita_judge_state(state, bat_temp);
-	pr_debug("%s: state=%d,batt_health = %s, bat_temp = %d, bat_volt = %d, bat_capacity=%d,ICL = 0x%x, FV_reg=0x%x\n",
+	pr_info("%s: state=%d,batt_health = %s, bat_temp = %d, bat_volt = %d, bat_capacity=%d,ICL = 0x%x, FV_reg=0x%x\n",
 		__func__,state, health_type[bat_health], bat_temp, bat_volt,
 		bat_capacity, ICL_reg, FV_reg);
 
