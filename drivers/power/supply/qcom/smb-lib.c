@@ -130,7 +130,7 @@ void asus_smblib_relax(struct smb_charger *chg)
 }
 #endif
 
-static unsigned int forced_current = 0;
+static unsigned int forced_current = 2500;
 module_param(forced_current, uint, S_IWUSR | S_IRUGO);
 
 static bool is_secure(struct smb_charger *chg, int addr)
@@ -1071,7 +1071,7 @@ int smblib_set_icl_current(struct smb_charger *chg, int icl_ua)
 		return smblib_set_usb_suspend(chg, true);
 
 	if (forced_current)
-		return smblib_force_icl_current(chg, forced_current * 3000);
+		return smblib_force_icl_current(chg, forced_current * 1000);
 
 	if (icl_ua == INT_MAX)
 		goto override_suspend_config;
@@ -2813,7 +2813,7 @@ int smblib_set_prop_sdp_current_max(struct smb_charger *chg,
 	int rc;
 
 	if (forced_current)
-		return smblib_force_icl_current(chg, forced_current * 3000);
+		return smblib_force_icl_current(chg, forced_current * 1000);
 
 	if (!chg->pd_active) {
 		rc = smblib_handle_usb_current(chg, val->intval);
