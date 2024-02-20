@@ -2547,7 +2547,7 @@ static void smb1351_external_power_changed(struct power_supply *psy)
 	if (rc)
 		pr_err("Couldn't read USB current_max property, rc=%d\n", rc);
 	else
-		current_limit = prop.intval / 2000;
+		current_limit = prop.intval / 1000;
 
 	pr_debug("online = %d, current_limit = %d\n", online, current_limit);
 
