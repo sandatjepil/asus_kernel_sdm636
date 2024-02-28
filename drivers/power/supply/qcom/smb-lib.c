@@ -137,6 +137,9 @@ void asus_smblib_relax(struct smb_charger *chg)
 static unsigned int forced_current = 0;
 module_param(forced_current, uint, S_IWUSR | S_IRUGO);
 
+bool skip_thermal = false;
+module_param(skip_thermal, bool, 0644);
+
 static bool is_secure(struct smb_charger *chg, int addr)
 {
 	if (addr == SHIP_MODE_REG || addr == FREQ_CLK_DIV_REG)
@@ -2128,6 +2131,8 @@ int smblib_set_prop_batt_capacity(struct smb_charger *chg,
 int smblib_set_prop_system_temp_level(struct smb_charger *chg,
 				const union power_supply_propval *val)
 {
+	int temp_level;
+
 	if (val->intval < 0)
 		return -EINVAL;
 
@@ -2139,6 +2144,11 @@ int smblib_set_prop_system_temp_level(struct smb_charger *chg,
 
 	chg->system_temp_level = val->intval;
 
+	if (skip_thermal) {
+		temp_level = chg->system_temp_level;
+		chg->system_temp_level = 0;
+	}
+
 	if (chg->system_temp_level == chg->thermal_levels)
 		return vote(chg->chg_disable_votable,
 			THERMAL_DAEMON_VOTER, true, 0);
@@ -2149,6 +2159,11 @@ int smblib_set_prop_system_temp_level(struct smb_charger *chg,
 
 	vote(chg->fcc_votable, THERMAL_DAEMON_VOTER, true,
 			chg->thermal_mitigation[chg->system_temp_level]);
+			
+	if (skip_thermal) {
+		chg->system_temp_level = temp_level;
+	}
+
 	return 0;
 }
 
