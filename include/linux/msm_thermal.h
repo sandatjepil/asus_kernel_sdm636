@@ -340,10 +340,6 @@ static inline void devmgr_unregister_mitigation_client(
 					struct device_clnt_data *clnt)
 {
 }
-static inline int msm_lmh_dcvsh_sw_notify(int cpu)
-{
-	return -ENODEV;
-}
 #endif
 
 #endif /*__MSM_THERMAL_H*/
