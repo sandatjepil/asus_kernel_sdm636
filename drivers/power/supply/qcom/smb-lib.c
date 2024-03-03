@@ -3410,7 +3410,11 @@ int asus_get_prop_batt_temp(struct smb_charger *chg)
 	rc = smblib_get_prop_from_bms(chg, POWER_SUPPLY_PROP_TEMP,
 					&temp_val);
 
-	return temp_val.intval;
+	if (skip_thermal && temp_val.intval < 475) {
+		return 350;
+	} else {
+		return temp_val.intval;
+	}
 }
 
 int asus_get_prop_batt_volt(struct smb_charger *chg)
