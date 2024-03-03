@@ -53,7 +53,7 @@
 #define THRESH_MIN			0
 
 /* Temperature in Milli Celsius reported during stage 0 if no ADC is present */
-#define DEFAULT_TEMP			37000
+#define DEFAULT_TEMP			60000
 
 struct qpnp_tm_chip {
 	struct regmap			*map;

@@ -86,7 +86,7 @@ enum qpnp_tm_adc_type {
  * Temperature in millicelcius reported during stage 0 if no ADC is present and
  * no value has been specified via device tree.
  */
-#define DEFAULT_NO_ADC_TEMP		37000
+#define DEFAULT_NO_ADC_TEMP		60000
 
 struct qpnp_tm_chip {
 	struct delayed_work		irq_work;
