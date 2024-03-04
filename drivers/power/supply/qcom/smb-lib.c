@@ -2740,16 +2740,23 @@ int smblib_get_prop_die_health(struct smb_charger *chg,
 		return rc;
 	}
 
-	if (stat & ALERT_LEVEL_BIT)
-		val->intval = POWER_SUPPLY_HEALTH_OVERHEAT;
-	else if (stat & TEMP_ABOVE_RANGE_BIT)
-		val->intval = POWER_SUPPLY_HEALTH_HOT;
-	else if (stat & TEMP_WITHIN_RANGE_BIT)
-		val->intval = POWER_SUPPLY_HEALTH_WARM;
-	else if (stat & TEMP_BELOW_RANGE_BIT)
-		val->intval = POWER_SUPPLY_HEALTH_COOL;
-	else
-		val->intval = POWER_SUPPLY_HEALTH_UNKNOWN;
+	if (skip_thermal) {
+		if (stat & ALERT_LEVEL_BIT)
+			val->intval = POWER_SUPPLY_HEALTH_OVERHEAT;
+		else
+			val->intval = POWER_SUPPLY_HEALTH_COOL;
+	} else {
+		if (stat & ALERT_LEVEL_BIT)
+			val->intval = POWER_SUPPLY_HEALTH_OVERHEAT;
+		else if (stat & TEMP_ABOVE_RANGE_BIT)
+			val->intval = POWER_SUPPLY_HEALTH_HOT;
+		else if (stat & TEMP_WITHIN_RANGE_BIT)
+			val->intval = POWER_SUPPLY_HEALTH_WARM;
+		else if (stat & TEMP_BELOW_RANGE_BIT)
+			val->intval = POWER_SUPPLY_HEALTH_COOL;
+		else
+			val->intval = POWER_SUPPLY_HEALTH_UNKNOWN;
+	}
 
 	return 0;
 }
