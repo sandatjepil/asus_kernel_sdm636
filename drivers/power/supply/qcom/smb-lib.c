@@ -2155,6 +2155,9 @@ int smblib_set_prop_system_temp_level(struct smb_charger *chg,
 	if (skip_thermal) {
 		temp_level = chg->system_temp_level;
 		chg->system_temp_level = 0;
+		vote(chg->fcc_votable, THERMAL_DAEMON_VOTER, false, 0);
+		vote(chg->usb_icl_votable, THERMAL_DAEMON_VOTER, false, 0);
+		return 0;
 	}
 
 	if (chg->system_temp_level == chg->thermal_levels)
