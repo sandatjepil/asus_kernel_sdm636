@@ -89,8 +89,8 @@ static struct step_chg_cfg step_chg_config = {
 	.fcc_cfg	= {
 		/* VBAT_LOW	VBAT_HIGH	FCC */
 		{3600000,	4000000,	3000000},
-		{4001000,	4200000,	2800000},
-		{4201000,	4400000,	2000000},
+		{4001000,	4200000,	3000000},
+		{4201000,	4400000,	3000000},
 	},
 	/*
 	 *	SOC STEP-CHG configuration example.
@@ -122,9 +122,9 @@ static struct jeita_fcc_cfg jeita_fcc_config = {
 	.fcc_cfg	= {
 		/* TEMP_LOW	TEMP_HIGH	FCC */
 		{0,		100,		600000},
-		{101,		200,		2000000},
+		{101,		200,		3000000},
 		{201,		450,		3000000},
-		{451,		550,		600000},
+		{451,		550,		3000000},
 	},
 };
 
