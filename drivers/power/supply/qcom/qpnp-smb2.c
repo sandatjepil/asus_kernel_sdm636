@@ -128,8 +128,8 @@ static struct smb_params v1_params = {
 		.name	= "jeita fcc reduction",
 		.reg	= JEITA_CCCOMP_CFG_REG,
 		.min_u	= 0,
-		.max_u	= 1575000,
-		.step_u	= 25000,
+		.max_u	= 0,
+		.step_u	= 0,
 	},
 	.freq_buck		= {
 		.name	= "buck switching frequency",
