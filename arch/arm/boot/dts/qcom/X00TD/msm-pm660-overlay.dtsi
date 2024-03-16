@@ -69,7 +69,9 @@
 
 &pm660_charger {
 	qcom,chg-alert-vadc = <&pm660_vadc>;
-
+	qcom,thermal-mitigation
+		= <3000000 2500000 2500000 2500000
+			2500000 2500000 2500000 2500000>;
 	qcom,micro-usb;
 	qcom,fcc-max-ua = <3000000>;
 	qcom,fv-max-uv = <4350000>;
