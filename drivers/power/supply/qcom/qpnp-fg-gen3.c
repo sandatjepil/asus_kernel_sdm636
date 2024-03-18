@@ -4359,7 +4359,7 @@ static int fg_memif_init(struct fg_chip *chip)
 	return fg_ima_init(chip);
 }
 
-#ifndef CONFIG_MACH_ASUS_X00T
+#ifndef CONFIG_MACH_ASUS_X00TD
 static int fg_adjust_timebase(struct fg_chip *chip)
 {
 	int rc = 0, die_temp;
@@ -4502,7 +4502,7 @@ static irqreturn_t fg_delta_batt_temp_irq_handler(int irq, void *data)
 	chip->health = prop.intval;
 
 	if (chip->last_batt_temp != batt_temp) {
-#ifndef CONFIG_MACH_ASUS_X00T
+#ifndef CONFIG_MACH_ASUS_X00TD
 		rc = fg_adjust_timebase(chip);
 		if (rc < 0)
 			pr_err("Error in adjusting timebase, rc=%d\n", rc);
@@ -4579,7 +4579,7 @@ static irqreturn_t fg_delta_msoc_irq_handler(int irq, void *data)
 	rc = fg_esr_validate(chip);
 	if (rc < 0)
 		pr_err("Error in validating ESR, rc=%d\n", rc);
-#ifndef CONFIG_MACH_ASUS_X00T
+#ifndef CONFIG_MACH_ASUS_X00TD
 	rc = fg_adjust_timebase(chip);
 	if (rc < 0)
 		pr_err("Error in adjusting timebase, rc=%d\n", rc);
