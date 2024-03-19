@@ -2549,7 +2549,11 @@ int smblib_get_prop_charger_temp(struct smb_charger *chg,
 		return PTR_ERR(chg->iio.temp_chan);
 
 	rc = iio_read_channel_processed(chg->iio.temp_chan, &val->intval);
-	val->intval /= 100;
+	if (skip_thermal && val->intval < 70000) {
+		val->intval = 350;
+	} else {
+		val->intval /= 100;
+	}
 	return rc;
 }
 
