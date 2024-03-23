@@ -3779,14 +3779,18 @@ void asus_update_usb_connector_state(struct smb_charger *chip)
 	struct qpnp_vadc_result usb_vadc_result;
 	int rc;
 
-	chip->gpio12_vadc_dev = qpnp_get_vadc(chip->dev, "chg-alert");
+	if (!skip_thermal) {
+		chip->gpio12_vadc_dev = qpnp_get_vadc(chip->dev, "chg-alert");
 
-	if (IS_ERR(chip->gpio12_vadc_dev)) {
-		pr_err(" Error get chg_alert vadc rc = %d \n", rc);
-		rc = PTR_ERR(chip->gpio12_vadc_dev);
-		if(rc != -EPROBE_DEFER)
-			pr_err(" Couldn't get chg_alert vadc rc = %d \n", rc);
-		return;
+		if (IS_ERR(chip->gpio12_vadc_dev)) {
+			pr_err(" Error get chg_alert vadc rc = %d \n", rc);
+			rc = PTR_ERR(chip->gpio12_vadc_dev);
+			if(rc != -EPROBE_DEFER)
+				pr_err(" Couldn't get chg_alert vadc rc = %d \n", rc);
+			return;
+		}
+	} else {
+		chip->gpio12_vadc_dev = 0;
 	}
 
 	if(chip->gpio12_vadc_dev) {
