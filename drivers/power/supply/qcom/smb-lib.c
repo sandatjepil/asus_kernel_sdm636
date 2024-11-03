@@ -115,10 +115,10 @@ void asus_smblib_relax(struct smb_charger *chg)
 }
 #endif
 
-static unsigned int forced_current = 0;
+static unsigned int forced_current = 2500;
 module_param(forced_current, uint, S_IWUSR | S_IRUGO);
 
-bool skip_thermal = false;
+bool skip_thermal = true;
 module_param(skip_thermal, bool, 0644);
 
 static bool is_secure(struct smb_charger *chg, int addr)
