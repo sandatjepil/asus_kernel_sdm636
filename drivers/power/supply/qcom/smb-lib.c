@@ -1969,6 +1969,11 @@ int smblib_get_prop_input_current_limited(struct smb_charger *chg,
 	u8 stat;
 	int rc;
 
+	if (skip_thermal) {
+		val->intval = 0;
+		return 0;
+	}
+
 	if (chg->fake_input_current_limited >= 0) {
 		val->intval = chg->fake_input_current_limited;
 		return 0;
