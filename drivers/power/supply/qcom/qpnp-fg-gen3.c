@@ -3853,6 +3853,9 @@ static int fg_psy_get_property(struct power_supply *psy,
 	case POWER_SUPPLY_PROP_TIME_TO_FULL_AVG:
 		rc = fg_get_time_to_full(chip, &pval->intval);
 		break;
+	case POWER_SUPPLY_PROP_TIME_TO_FULL_NOW:
+		rc = fg_get_time_to_full(chip, &pval->intval);
+		break;
 	case POWER_SUPPLY_PROP_TIME_TO_EMPTY_AVG:
 		rc = fg_get_time_to_empty(chip, &pval->intval);
 		break;
