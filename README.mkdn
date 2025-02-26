@@ -1,0 +1,27 @@
+:star: Kernel Source Based from [Codelinaro](https://git.codelinaro.org/clo/la/kernel/msm-4.4/-/tree/LA.UM.9.2.r1-03700-SDMxx0.0), for Asus Zenfone Max Pro M1 | `ASUS_X00TD,X00TD,X00T`
+
+:star: Support for Android 9 (*Pie*) - 13 (*Tiramisu*)
+
+:star: Clang 17-21 Ready!
+
+:hammer: Getting Started
+---------------
+
+:arrow_forward: clone with `--recursive` option because this source has KernelSU submodule.
+
+```bash
+git clone --recursive https://github.com/sandatjepil/asus_kernel_sdm636
+```
+
+:arrow_forward: For building <b>Android 9 or 10 ROM</b>, Revert this [commit](https://github.com/sandatjepil/asus_kernel_sdm636/commit/5a6d718e9cb74231a599c7e19ba8e28974d487ac)
+```bash
+git revert 5a6d718e9cb74231a599c7e19ba8e28974d487ac
+```
+
+---------------
+:star: Finding Linux readme? [Click here!](https://github.com/sandatjepil/asus_kernel_sdm636/blob/zeus/README)
+
+---------------
+:hammer: Credits
+---------------
+[RyuujiX/android_kernel_asus_sdm660](https://github.com/RyuujiX/android_kernel_asus_sdm660)
